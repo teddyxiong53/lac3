@@ -10,7 +10,18 @@ add_defines("LINUX", "HAS_PTHREAD", "HAS_STD_MALLOC", "HAVE_CLOCK_GETTIME", "HAS
 )
 add_includedirs("./src/common_header")
 
-add_includedirs("./src/memcheck", "./src/ringbuffer")
+add_includedirs(
+"./src/memcheck", 
+"./src/ringbuffer",
+"./src/elk", 
+"./src/event_handler",
+"./src/jsonrpc", 
+"./src/libev",
+"./src/tinyparam", 
+"./src/tinythpool", 
+"./src/lua/lua5.3", 
+"./src/cjson"
+)
 
 add_links("c","m","rt", "pthread", "dl")
 
@@ -21,8 +32,14 @@ target("lac")
     -- add deps
     add_files("src/memcheck/*.c")
     add_files("src/ringbuffer/*.c")
-
-
+    add_files("src/cjson/*.c")
+    add_files("src/elk/*.c")
+    add_files("src/jsonrpc/*.c")
+    add_files("src/libev/ev.c")
+    add_files("src/tinyparam/*.c")
+    add_files("src/tinythpool/*.c")
+    add_files("src/lua/lua5.3/*.c")
+    add_files("src/event_handler/*.c")
 includes(
 "test"
 )
